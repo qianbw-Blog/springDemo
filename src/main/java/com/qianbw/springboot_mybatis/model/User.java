@@ -1,11 +1,13 @@
 package com.qianbw.springboot_mybatis.model;
 
+import java.io.Serializable;
+
 /**
  * 功能描述: 用户实体类
  * @Author: Qianbw
  * @Date: 2020/3/7 18:57
  */
-public class User extends CommonModel {
+public class User extends CommonModel implements Serializable {
     private Integer id;
 
     private String username;

@@ -21,6 +21,22 @@ spring:
           test-on-return: false
           test-while-idle: true
           max-total: 20
+
+  #redis
+  redis:
+    host: 101.200.135.239
+    post: 6379
+    password: 19712288Qianbw
+    jedis:
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: -1
+    timeout: 3000
+  session:
+    store-type: redis
+
 ###ThymeLeaf配置
   thymeleaf:
     #模板的模式，支持 HTML, XML TEXT JAVASCRIPT

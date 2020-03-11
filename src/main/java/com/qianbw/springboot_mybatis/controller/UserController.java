@@ -117,15 +117,25 @@ public class UserController {
     }
 
     @RequestMapping("/toLogin")
-    public String toLogin(){
+    public String toLogin(String logout, HttpServletRequest request){
+        if ("1".equals(logout)){//判断是否是用户退出 1：是
+            request.getSession().setAttribute("successLogin", false);
+            request.getSession().removeAttribute("user");
+        }
         return "/login";
     }
 
     @ResponseBody
     @RequestMapping("/login")
-    public Message login(User user){
+    public Message login(User user, HttpServletRequest request){
+
+        request.getSession().setAttribute("successLogin", false);
         Result result = userService.userLogin(user);
+
         if (result instanceof Result.Success){
+
+            request.getSession().setAttribute("user",(User)((Result.Success) result).getData());
+            request.getSession().setAttribute("successLogin",true);
             return new Message(true,Code.SUCCESS,1,true);
         }else if(result instanceof Result.Fail)
         {

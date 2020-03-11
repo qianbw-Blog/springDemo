@@ -34,6 +34,21 @@ spring:
     #配置模板路径，默认是templates，可以不用配置
     prefix: classpath:/templates
 
+#redis
+  redis:
+    host: 101.200.135.239
+    post: 6379
+    password: 19712288Qianbw
+    jedis:
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: -1
+    timeout: 3000
+  session:
+    store-type: redis
+
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
   type-aliases-package: com.qianbw.springbott_mybatis.model
@@ -52,3 +67,4 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=cpuntSql
+
